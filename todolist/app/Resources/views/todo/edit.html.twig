@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+        <h2 class="page-header">Edit Todo</h2>
+    {{form_start(form)}}
+    {{form_widget(form)}}
+    {{form_end(form)}}
+
+{% endblock %}
+    {% block javascripts %}
+
+        <script>
+            $('.tokenfield').tokenfield({
+                autocomplete: {
+                    source: {{ all_categories | json_encode | raw}},
+                    delay: 100
+                },
+                tokens: {{ categories | json_encode | raw }},
+                showAutocompleteOnFocus: true
+            });
+        </script>
+    {% endblock %}

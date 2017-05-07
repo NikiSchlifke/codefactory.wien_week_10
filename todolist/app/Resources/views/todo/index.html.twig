@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+<h2 class="page-header"> Latest todos </h2>
+<div>
+    {% for todo in todos %}
+    <div class="">
+        {% if todo.isPastDueDate() %}
+    <div class="row alert alert-warning">
+            {% else %}
+    <div class="row alert alert-success">
+            {% endif %}
+
+
+            <div class="col-xs-8 col-md-9">
+                <div class="row">
+                    <div class="col-xs-12 col-md-2">
+
+                                {% for category in todo.getCategories() %}
+                                    <span class="label label-info">{{ category.name }}</span>
+                                {% endfor %}
+                    </div>
+                    <div class="col-xs-12 col-md-6">{{ todo.name }}</div>
+                    <div class="col-xs-12 col-md-4">{{ todo.dueDate|date('F j, Y, g:i a') }}</div>
+                </div>
+
+            </div>
+                <div class="col-xs-4 col-md-3">
+
+                    <div class="btn-group btn-group-justified hidden-xs" role="group" aria-label="...">
+                        <a href="/todo/details/{{ todo.id }}" class="btn btn-success">View</a>
+                        <a href="/todo/edit/{{ todo.id }}" class="btn btn-default">Edit</a>
+                        <a href="/todo/delete/{{ todo.id }}" class="btn btn-danger">Delete</a>
+                    </div>
+
+                    <div class="btn-group-vertical visible-xs" role="group" aria-label="...">
+                        <a href="/todo/details/{{ todo.id }}" class="btn btn-success">View</a>
+                        <a href="/todo/edit/{{ todo.id }}" class="btn btn-default">Edit</a>
+                        <a href="/todo/delete/{{ todo.id }}" class="btn btn-danger">Delete</a>
+                    </div>
+
+                </div>
+
+
+
+        </div>
+            </div>
+
+        
+        {% endfor %}
+
+    </div>
+
+
+    {% endblock %}

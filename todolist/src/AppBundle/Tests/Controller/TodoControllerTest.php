@@ -4,6 +4,6 @@ namespace AppBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class TodoControllerControllerTest extends WebTestCase
+class TodoControllerTest extends WebTestCase
 {
 }
